@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>{{ post.title }} - Detail</title>
+    <style>
+        body { font-family: Arial, sans-serif; margin: 20px; }
+        .container { max-width: 700px; margin: auto; padding: 20px; border: 1px solid #ddd; border-radius: 8px; }
+        h1 { color: #333; }
+        p { font-size: 16px; line-height: 1.5; }
+        a { display: inline-block; margin-top: 20px; text-decoration: none; padding: 10px 15px; background: #007bff; color: white; border-radius: 5px; }
+        a:hover { background: #0056b3; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        {% if post %}
+            <h1>{{ post.title }}</h1>
+            <p>{{ post.description }}</p>
+        {% else %}
+            <h1>Post Not Found</h1>
+            <p>The post you are looking for does not exist.</p>
+        {% endif %}
+
+        <a href="{% url 'portfolio_app:index' %}">← Back to Services</a>
+    </div>
+</body>
+</html>

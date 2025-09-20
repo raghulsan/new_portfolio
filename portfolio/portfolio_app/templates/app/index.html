@@ -1,0 +1,171 @@
+
+{% extends 'app/base.html' %}
+
+{% load static %}
+
+{% block content %}
+
+    <section id="home" class="home">
+        <div class="homecontent">
+            <h3>Hello It's Me</h3>
+            <h1>Ragul</h1>
+            <h3>And I'm a <span class="text">Fullstack Developer</span></h3>
+            <p>A dedicated Fullstack Developer skilled in creating modern, responsive web applications. <br>
+                Passionate about coding, problem-solving, and turning ideas into reality.</p>
+            <div class="homesci">
+                <a href="https://www.facebook.com/share/1GjyrfsVu4/?mibextid=wwXIfr" target="_blank"><i class="fa-brands fa-facebook-f"></i></a>
+                <a href="https://www.instagram.com/raghulsan2?igsh=eG8ycnVuaXJra2Nj&utm_source=qr"  target="_blank"><i class="fa-brands fa-square-instagram"></i></a>
+                <a href="https://www.linkedin.com/in/raghul-san-5804121b8?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=ios_app" target="_blank"><i class="fa-brands fa-linkedin-in"></i></a>
+                <a href="#"><i class="fa-brands fa-github"></i></a>
+            </div>
+            <a href="" download="Ragul_Resume" id="btnbox" onclick="btndownload()" class="btnbox">Download CV</a>
+        </div>
+        <div class="photo">
+            <img src="{% static 'images/ragul.jpg' %}" alt="ragul">
+        </div>
+    </section>
+    <section class="about" id="about">
+        <div class="aboutimg">
+            <div class="front">
+                <img src= "{% static 'images/ragul.jpg' %}" alt="ragul">
+            </div>
+            <div class="back">
+                <h1>Name  : <span>Ragul</span></h1>
+                <h1>Ph  : <span>63698 01098</span></h1>
+                <h1>Email  : <span>raghulsan2@gmail.com</span></h1>
+            </div>
+        </div>
+        <div class="abouttext">
+            <h2>About <span>Me</span></h2>
+            <h4>Full Stack Developer !</h4>
+            <p>Passionate and results-driven Full Stack Developer with strong expertise in front-end and back-end
+                technologies. Proficient in building responsive, scalable, and user-friendly web applications using
+                HTML, CSS, Bootstrap, JavaScript, React, Python, and MySQL. Adept at designing dynamic UIs and
+                implementing RESTful APIs with secure and efficient database integration.
+            </p>
+            <a href="#about" class="btnbox" target="_blank">More About ME</a>
+        </div>
+    </section>
+    <a href="#home" class="top-icon"><i class="fa-regular fa-circle-up"></i></a>
+    <section id="skills" class="skills">
+        <h1 class="subtitle">My <span>Skills</span></h1>
+        <div class="skilllist">
+            <div class="card">
+                <h2><i class="fa-brands fa-html5"></i> HTML</h2>
+            </div>
+            <div class="card">
+                <h2><i class="fa-brands fa-css"></i> CSS</h2>
+            </div>
+            <div class="card">
+                <h2><i class="fa-brands fa-js"></i> JavaScript</h2>
+            </div>
+            <div class="card">
+                <h2><i class="fa-brands fa-react"></i> React</h2>
+            </div>
+        </div>
+        <div class="skilllist">
+            <div class="card">
+                <h2><i class="fa-solid fa-code-merge"></i> Animation</h2>
+            </div>
+            <div class="card">
+                <h2><i class="fa-brands fa-python"></i> Python</h2>
+            </div>
+            <div class="card">
+                <h2><i class="fa-solid fa-database"></i> MySQL</h2>
+            </div>
+            <div class="card">
+                <h2><i class="fa-regular fa-file-code"></i> Django</h2>
+            </div>
+        </div>
+    </section>
+    <section>
+    {% if posts %}
+    <div class="service" id="service">
+        <div class="container">
+            <h1 class="subtitle">My <span>service</span></h1>
+            <div class="servicelist">
+                {% for post in posts %}
+                <div class="box">
+                    <h2>{{ post.title }}</h2>
+                    <p>
+                        {% if post.title == "Front-end" %}
+                            I design and build visually engaging and responsive websites using HTML, CSS, JavaScript, and
+                            React. My focus is on creating user-friendly interfaces that are fast, modern, and
+                            compatible across all devices and browsers.
+                        {% elif post.title == "Back-end" %}
+                            I develop secure and scalable server-side applications using technologies like Python,
+                            Node.js, MySQL, and REST APIs. My work ensures smooth data processing, user authentication,
+                            and seamless integration with front-end systems.
+                        {% elif post.title == "Animation" %}
+                            I bring websites to life with smooth animations and interactive elements using CSS
+                            animations, JavaScript, and animation libraries like AOS and GSAP. These effects enhance
+                            user experience and add a dynamic feel to the interface.
+                            
+                        {% endif %}
+                    </p>
+                    <a href="{% url 'portfolio_app:detail' post_id=post.id %}" class="btnread">Read More</a>
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+    {% else %}
+    <p>No posts available.</p>
+    {% endif %}
+</section>
+
+    {% comment %} <section>
+        {% if posts %}
+        <div class="service" id="service">
+            <div class="container">
+                <h1 class="subtitle">My <span>service</span></h1>
+                <div class="servicelist">
+                    <div class="box">
+                        <h2>Front-end</h2>
+                        <p>I design and build visually engaging and responsive websites using HTML, CSS, JavaScript, and
+                            React. My focus is on creating user-friendly interfaces that are fast, modern, and
+                            compatible across all devices and browsers.
+                        </p>
+                        <a href="{% url 'portfolio_app:detail' post_id=post.id %}" class="btnbox">Read More</a>
+                    </div>
+                    <div class="box">
+                        <h2>Back-end</h2>
+                        <p>I develop secure and scalable server-side applications using technologies like Python,
+                            Node.js, MySQL, and REST APIs. My work ensures smooth data processing, user authentication,
+                            and seamless integration with front-end systems.
+                        </p>
+                        <a href="{% url 'portfolio_app:detail' post_id=post.id %}" class="btnbox">Read More</a>
+                    </div>
+                    <div class="box">
+                        <h2>Animation</h2>
+                        <p>I bring websites to life with smooth animations and interactive elements using CSS
+                            animations, JavaScript, and animation libraries like AOS and GSAP. These effects enhance
+                            user experience and add a dynamic feel to the interface.
+                        </p>
+                        <a href="{% url 'portfolio_app:detail' post_id=post.id %}" class="btnbox">Read More</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        {% else %}
+        <p>No posts available.</p>
+    {% endif %}
+    </section> {% endcomment %}
+    <section id="contact" class="contact">
+        <h1 class="subtitle"><span>Contact</span></h1>
+        <div class="contactcontainer">
+            <div class="contactform">
+                <form action="#">
+                    <h1 class="cnt">Contact</h1>
+                    <input type="name" name="name" id="#" placeholder="Name" required><br />
+                    <input type="email" name="email" id="#" placeholder="Email" required><br />
+                    <textarea placeholder="Enter Your Message" name="message" required></textarea>
+                    <button class="btnread" type="submit">Submit</button>
+                </form>
+            </div>
+            <div class="walk">
+                <img src="{% static "images/contact.svg" %}" alt="walking image">
+            </div>
+        </div>
+    </section>
+{% endblock %}
